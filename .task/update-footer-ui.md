@@ -1,0 +1,1 @@
+Just like update-blog-detail-ui, i want footer of all page, footer in App, has wearther and clock too

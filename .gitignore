@@ -38,4 +38,4 @@ Desktop.ini
 # Temporary files
 .cache/
 
-.task/
+# .task/
