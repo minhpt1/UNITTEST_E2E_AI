@@ -3,8 +3,12 @@
 echo "Starting Personal Blog Application..."
 echo ""
 
-echo "Installing Backend Dependencies..."
-npm i --force
+if [ ! -d "node_modules" ]; then
+    echo "Installing Backend Dependencies..."
+    npm i --force
+else
+    echo "Backend dependencies already installed."
+fi
 
 echo "Starting Backend Server..."
 npm run dev &
@@ -12,8 +16,13 @@ npm run dev &
 echo "Waiting for backend to initialize..."
 sleep 3
 
-echo "Installing Frontend Dependencies..."
-cd client && npm i --force
+cd client
+if [ ! -d "node_modules" ]; then
+    echo "Installing Frontend Dependencies..."
+    npm i --force
+else
+    echo "Frontend dependencies already installed."
+fi
 
 echo "Starting Frontend Client..."
 npm start &

@@ -3,8 +3,12 @@ Write-Host "Starting Personal Blog Application..." -ForegroundColor Cyan
 Write-Host ""
 
 # Install Backend Dependencies
-Write-Host "Installing Backend Dependencies..." -ForegroundColor Magenta
-npm i --force
+if (-Not (Test-Path "node_modules")) {
+    Write-Host "Installing Backend Dependencies..." -ForegroundColor Magenta
+    npm i --force
+} else {
+    Write-Host "Backend dependencies already installed." -ForegroundColor Green
+}
 
 # Start Backend Server
 Write-Host "Starting Backend Server..." -ForegroundColor Yellow
@@ -15,9 +19,13 @@ Write-Host "Waiting for backend to initialize..." -ForegroundColor Green
 Start-Sleep -Seconds 3
 
 # Install Frontend Dependencies
-Write-Host "Installing Frontend Dependencies..." -ForegroundColor Magenta
 Set-Location client
-npm i --force
+if (-Not (Test-Path "node_modules")) {
+    Write-Host "Installing Frontend Dependencies..." -ForegroundColor Magenta
+    npm i --force
+} else {
+    Write-Host "Frontend dependencies already installed." -ForegroundColor Green
+}
 Set-Location ..
 
 # Start Frontend Client
