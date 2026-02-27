@@ -3,14 +3,20 @@
 echo "Starting Personal Blog Application..."
 echo ""
 
+echo "Installing Backend Dependencies..."
+npm i --force
+
 echo "Starting Backend Server..."
 npm run dev &
 
 echo "Waiting for backend to initialize..."
 sleep 3
 
+echo "Installing Frontend Dependencies..."
+cd client && npm i --force
+
 echo "Starting Frontend Client..."
-cd client && npm start &
+npm start &
 
 echo ""
 echo "Both servers are starting up..."
